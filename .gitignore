@@ -1,0 +1,15 @@
+# IDE files
+.classpath
+.project
+.settings/
+
+# Maven/Gradle build output
+target/
+build/
+
+# Compressed files
+*.zip
+*.rar
+
+# Other
+.~*
