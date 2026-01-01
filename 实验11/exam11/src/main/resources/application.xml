@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="doctorBean" class="cn.edu.sdju.soft.aop.impl.Doctor" />
+    <bean id="policeBean" class="cn.edu.sdju.soft.aop.impl.Police" />
+
+    <bean id="myAspect" class="cn.edu.sdju.soft.aop.MyXmlAspect" />
+
+    <aop:config>
+        <aop:aspect ref="myAspect">
+            
+            <aop:pointcut expression="execution(* cn.edu.sdju.soft.aop.impl.*.*(..))" id="myPointcut"/>
+
+            <aop:before method="takeOffCloth" pointcut-ref="myPointcut" />
+
+            <aop:after-returning method="putOnCloth" pointcut-ref="myPointcut" />
+            
+        </aop:aspect>
+    </aop:config>
+
+</beans>
