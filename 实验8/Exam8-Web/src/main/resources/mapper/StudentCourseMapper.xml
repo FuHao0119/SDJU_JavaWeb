@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.sdju.soft.dao.StudentCourseMapper">
+
+    <insert id="insertStudentCourse" parameterType="cn.edu.sdju.soft.bean.StudentCourse" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tb_stu_course (stuId, courseId)
+        VALUES (#{stuId}, #{courseId})
+    </insert>
+
+    <select id="selectAllStudentCourses" resultType="cn.edu.sdju.soft.bean.StudentCourse">
+        SELECT id,stuId,courseId FROM tb_stu_course
+    </select>
+
+</mapper>
