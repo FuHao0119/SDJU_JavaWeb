@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.sdju.soft.exp.dao.CustomerDao">
+    <!-- 插入 -->
+    <insert id="insertCustomer" useGeneratedKeys="true" keyProperty="id"
+            parameterType="cn.edu.sdju.soft.exp.bean.Customer">
+        insert into tb_customer (id,username,jobs,phone)
+        values
+        (#{id},#{username},#{jobs},#{phone})
+    </insert>
+    <!-- 根据id查询 -->
+    <select id="selectCustomer" parameterType="int" resultType="cn.edu.sdju.soft.exp.bean.Customer">
+        select id,username,jobs,phone from tb_customer
+        where id = #{id}
+    </select>
+    <!-- 查询全部 返回List -->
+    <select id="selectAll" resultType="cn.edu.sdju.soft.exp.bean.Customer">
+        select id,username,jobs,phone from tb_customer order by id
+    </select>
+    <!-- 修改 -->
+    <update id="updateCustomer" parameterType="cn.edu.sdju.soft.exp.bean.Customer">
+        update tb_customer
+        set username = #{username}, jobs = #{jobs}, phone = #{phone}
+        where id = #{id}
+    </update>
+    <!-- 根据ID删除 -->
+    <delete id="deleteCustomer" parameterType="int">
+        delete from tb_customer where id = #{id}
+    </delete>
+</mapper>
