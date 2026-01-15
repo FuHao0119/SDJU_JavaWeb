@@ -1,0 +1,45 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /exam14
+
+spring:
+  application:
+    name: exam14
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://117.72.186.14:3306/spboot_mybatis_demo?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: turtle
+    password: 123456
+    # Druid?????
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+
+# MyBatis
+mybatis:
+  # 实体类别名包
+  type-aliases-package: cn.edu.sdju.soft.exam14.entity
+  # Mapper映射文件路径
+  mapper-locations: classpath:mapper/**/*.xml
+  # 开启驼峰命名自动转换（如数据库字段create_time → 实体类createTime）
+  configuration:
+    map-underscore-to-camel-case: true
+    # 开启日志
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+logging:
+  level:
+    cn.edu.sdju.soft.exam14.mapper: INFO
+
+cn.edu.sdju.soft.exam14.service: INFO
+
